@@ -15,6 +15,9 @@ Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/process', [HomeController::class, 'processCheckout'])->name('checkout.process');
 
 // Backpage Admin Panel
+Route::get('/admin/{any?}', function () {
+    return view('welcome'); 
+})->where('any', '.*');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DesainController::class, 'index'])->name('dashboard');
     Route::resource('desain', DesainController::class);
